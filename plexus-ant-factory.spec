@@ -37,7 +37,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0
-Release:        0.12.a2.3.12%{?dist}
+Release:        0.12.a2.3.13%{?dist}
 Epoch:          0
 Summary:        Plexus Ant component factory
 # Email from copyright holder confirms license.
@@ -52,20 +52,20 @@ Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-maven-compiler-plugin
-BuildRequires:  maven30-maven-install-plugin
-BuildRequires:  maven30-maven-jar-plugin
-BuildRequires:  maven30-maven-javadoc-plugin
-BuildRequires:  maven30-maven-resources-plugin
-BuildRequires:  maven30-maven-surefire-plugin
-BuildRequires:  maven30-maven-surefire-provider-junit
-BuildRequires:  maven30-maven-doxia-sitetools
+BuildRequires:  %{?scl_prefix}maven-compiler-plugin
+BuildRequires:  %{?scl_prefix}maven-install-plugin
+BuildRequires:  %{?scl_prefix}maven-jar-plugin
+BuildRequires:  %{?scl_prefix}maven-javadoc-plugin
+BuildRequires:  %{?scl_prefix}maven-resources-plugin
+BuildRequires:  %{?scl_prefix}maven-surefire-plugin
+BuildRequires:  %{?scl_prefix}maven-surefire-provider-junit
+BuildRequires:  %{?scl_prefix}maven-doxia-sitetools
 
 BuildRequires:  %{?scl_prefix_java_common}ant
-BuildRequires:  maven30-plexus-classworlds
-BuildRequires:  maven30-plexus-containers-container-default
-BuildRequires:  maven30-plexus-utils
-BuildRequires:  maven30-plexus-component-factories-pom
+BuildRequires:  %{?scl_prefix}plexus-classworlds
+BuildRequires:  %{?scl_prefix}plexus-containers-container-default
+BuildRequires:  %{?scl_prefix}plexus-utils
+BuildRequires:  %{?scl_prefix}plexus-component-factories-pom
 
 
 %description
@@ -79,20 +79,20 @@ Javadoc for %{pkg_name}.
 
 %prep
 %setup -q -n %{pkg_name}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 cp %{SOURCE1} LICENSE
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_file  : %{parent}/%{subname}
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -106,6 +106,9 @@ set -e -x
 %doc LICENSE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 0:1.0-0.12.a2.3.13
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 0:1.0-0.12.a2.3.12
 - maven33 rebuild
 
