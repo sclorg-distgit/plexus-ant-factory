@@ -36,7 +36,7 @@
 
 Name:           %{?scl_prefix}%{parent}-%{subname}
 Version:        1.0
-Release:        0.18.a2.2.1%{?dist}
+Release:        0.18.a2.2.2%{?dist}
 Epoch:          0
 Summary:        Plexus Ant component factory
 # Email from copyright holder confirms license.
@@ -94,6 +94,9 @@ rm -rf $(readlink -f %{_javadocdir}/%{pkg_name}) %{_javadocdir}/%{pkg_name} || :
 %doc LICENSE
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 0:1.0-0.18.a2.2.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 0:1.0-0.18.a2.2.1
 - Automated package import and SCL-ization
 
